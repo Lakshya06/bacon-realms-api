@@ -20,7 +20,8 @@ const validate = (data) => {
     const schema = joi.object({
         username: joi.string().required().label("username"),
         password: passwordComplexity().required().label("password"),
-        confirmPassword: passwordComplexity().required().label("confirmPassword")
+        // confirmPassword: passwordComplexity().required().label("confirmPassword")
+        confirmPassword: joi.any().equal(joi.ref("password")).required().label("confirmPassword").options({messages: {'any.only': 'Password and Confirm Password do no match!'}})
     });
     return schema.validate(data)
 };
