@@ -23,12 +23,12 @@ router.post("/", async (req, res) => {
             return res.status(401).send({message: "Invalid Username or Password"});
 
         const token = user.generateAuthToken();
-        console.log(token);
+        // console.log(token);
         res.status(200).send({data: token, username: req.body.username, message: "Logged in successfully"})
-        console.log("Logged in")
+        // console.log("Logged in")
 
     }catch(error){
-        console.log(error);
+        // console.log(error);
         res.status(500).send({message: "Internal Server Error"});
     }
 })
